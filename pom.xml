@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <!-- POM file generated with GWT webAppCreator -->
@@ -11,11 +11,16 @@
     <name>com.we2seek.webgreetings</name>
 
     <properties>
-        <!-- Convenience property to set the GWT version -->
         <gwtVersion>2.7.0</gwtVersion>
-        <!-- Note: GWT needs at least java 1.6 -->
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
+
+        <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <org.springframework.version>4.2.5.RELEASE</org.springframework.version>
+        <spring.security.version>4.0.4.RELEASE</spring.security.version>
+
     </properties>
 
     <dependencyManagement>
@@ -52,16 +57,51 @@
             <artifactId>gwt-codeserver</artifactId>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.11</version>
             <scope>test</scope>
         </dependency>
+
+        <!--<dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${org.springframework.version}</version>
+        </dependency>
+-->
+        <!-- Ensure that all the transitive dependencies of Spring Security use the Spring
+        ${org.springframework.version} modules
+        -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-framework-bom</artifactId>
+            <version>${org.springframework.version}</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+
+
     </dependencies>
 
-    <build>
 
+    <build>
+        <finalName>gwtSpringHibernate</finalName>
+        <!-- Generate compiled stuff in the folder used for developing mode -->
+        <outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
         <plugins>
 
             <!-- GWT Maven Plugin-->
@@ -107,6 +147,24 @@
                 <version>2.17</version>
                 <configuration>
                     <skip>true</skip>
+                </configuration>
+            </plugin>
+
+            <!-- Copy static web files before executing gwt:run -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.1.1</version>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>exploded</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <webappDirectory>${webappDirectory}</webappDirectory>
                 </configuration>
             </plugin>
 
