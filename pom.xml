@@ -122,16 +122,16 @@
                      see gwt-maven-plugin documentation at codehaus.org -->
                 <configuration>
                     <modules>
-                        <module>com.we2seek.webgreetings</module>
+                        <module>com.we2seek.webgreetings.webgreetings</module>
                     </modules>
                     <!-- URL that should be opened by DevMode (gwt:run). -->
                     <runTarget>index.html</runTarget>
                     <!-- Ask GWT to create the Story of Your Compile (SOYC) (gwt:compile) -->
                     <compileReport>true</compileReport>
                     <!-- Run tests using HtmlUnit -->
-                    <mode>htmlunit</mode>
+                    <!--<mode>htmlunit</mode>-->
                     <!-- Tests patterns -->
-                    <includes>**/Test*.java,**/*Test.java,**/*TestCase.java</includes>
+                    <!--<includes>**/Test*.java,**/*Test.java,**/*TestCase.java</includes>-->
                 </configuration>
             </plugin>
 

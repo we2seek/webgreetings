@@ -1,4 +1,4 @@
-package com.we2seek.client;
+package com.we2seek.webgreetings.client;
 
 
 import com.google.gwt.core.client.EntryPoint;
