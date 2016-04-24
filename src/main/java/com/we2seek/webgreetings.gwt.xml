@@ -20,11 +20,10 @@
   <!-- Other module inherits                                      -->
 
   <!-- Specify the app entry point class.                         -->
-  <entry-point class='com.we2seek.client.webgreetings'/>
+  <entry-point class='com.we2seek.client.Index'/>
 
   <!-- Specify the paths for translatable code                    -->
   <source path='client'/>
-  <source path='shared'/>
 
   <!-- allow Super Dev Mode -->
   <add-linker name="xsiframe"/>

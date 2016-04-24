@@ -65,21 +65,11 @@
             <scope>test</scope>
         </dependency>
 
-        <!--<dependency>
+        <!-- Spring -->
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
             <version>${org.springframework.version}</version>
-        </dependency>
--->
-        <!-- Ensure that all the transitive dependencies of Spring Security use the Spring
-        ${org.springframework.version} modules
-        -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-framework-bom</artifactId>
-            <version>${org.springframework.version}</version>
-            <type>pom</type>
-            <scope>import</scope>
         </dependency>
 
         <dependency>
@@ -103,7 +93,7 @@
 
 
     <build>
-        <finalName>gwtSpringHibernate</finalName>
+        <finalName>webgreetings</finalName>
         <!-- Generate compiled stuff in the folder used for developing mode -->
         <outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
         <plugins>
@@ -135,7 +125,7 @@
                         <module>com.we2seek.webgreetings</module>
                     </modules>
                     <!-- URL that should be opened by DevMode (gwt:run). -->
-                    <runTarget>webgreetings.html</runTarget>
+                    <runTarget>index.html</runTarget>
                     <!-- Ask GWT to create the Story of Your Compile (SOYC) (gwt:compile) -->
                     <compileReport>true</compileReport>
                     <!-- Run tests using HtmlUnit -->

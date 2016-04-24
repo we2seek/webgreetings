@@ -18,21 +18,8 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <!-- Servlets -->
-    <servlet>
-        <servlet-name>greetServlet</servlet-name>
-        <servlet-class>com.we2seek.server.GreetingServiceImpl</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>greetServlet</servlet-name>
-        <url-pattern>/webgreetings/greet</url-pattern>
-    </servlet-mapping>
-
-    <!-- Default page to serve -->
     <welcome-file-list>
-        <welcome-file>webgreetings.html</welcome-file>
+        <welcome-file>index.html</welcome-file>
     </welcome-file-list>
-
 
 </web-app>
