@@ -4,10 +4,12 @@
               http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          version="2.5" xmlns="http://java.sun.com/xml/ns/javaee">
 
-    <conetxt-param>
-        <param-name>contextConfiguration</param-name>
-        <param-value>/WEB-INF/applicationContext.xml</param-value>
-    </conetxt-param>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            /WEB-INF/applicationContext.xml
+        </param-value>
+    </context-param>
 
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -17,6 +19,7 @@
         <filter-name>springSecurityFilterChain</filter-name>
         <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
     </filter>
+
     <filter-mapping>
         <filter-name>springSecurityFilterChain</filter-name>
         <url-pattern>/*</url-pattern>
@@ -24,13 +27,12 @@
 
     <servlet>
         <servlet-name>authServlet</servlet-name>
-        <servlet-class>ru.andrew.securegwt.server.AuthServiceImpl</servlet-class>
+        <servlet-class>com.we2seek.webgreetings.server.auth.AuthServiceImpl</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>authServlet</servlet-name>
-        <url-pattern>/securegwt/auth</url-pattern>
+        <url-pattern>/webgreetings/auth</url-pattern>
     </servlet-mapping>
-
 
 
     <welcome-file-list>

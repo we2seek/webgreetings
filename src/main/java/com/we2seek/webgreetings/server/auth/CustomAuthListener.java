@@ -1,12 +1,15 @@
 package com.we2seek.webgreetings.server.auth;
 
+import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationListener;
 import org.springframework.security.authentication.event.AbstractAuthenticationEvent;
 import org.springframework.security.authentication.event.AbstractAuthenticationFailureEvent;
-import sun.rmi.runtime.Log;
 
+// This class calls when login-event fires
 public class CustomAuthListener implements ApplicationListener<AbstractAuthenticationEvent> {
 
+    // Just save to log all auth attempts
+    final static Logger logger = Logger.getLogger(CustomAuthListener.class.getCanonicalName());
 
     @Override
     public void onApplicationEvent(AbstractAuthenticationEvent event) {
@@ -22,5 +25,6 @@ public class CustomAuthListener implements ApplicationListener<AbstractAuthentic
             builder.append(((AbstractAuthenticationFailureEvent) event).getException().getMessage());
         }
 
+        logger.debug(builder.toString());
     }
 }

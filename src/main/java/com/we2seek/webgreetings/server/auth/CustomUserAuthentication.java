@@ -4,12 +4,12 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.GrantedAuthorityImpl;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class CustomUserAuthentication implements Authentication {
-
-    private static final long serialVersionUID = -3091441742758356129L;
+public class CustomUserAuthentication implements Authentication, Serializable {
+    private static final long serialVersionUID = -102030L;
 
     private boolean authenticated;
 
@@ -22,8 +22,8 @@ public class CustomUserAuthentication implements Authentication {
     }
 
     @Override
-    public Collection<GrantedAuthority> getAuthorities() {
-        Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        Collection<GrantedAuthority> authorities = new ArrayList<>();
         authorities.add(grantedAuthority);
         return authorities;
     }
