@@ -7,16 +7,10 @@
              http://www.springframework.org/schema/security
              http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
-    <beans:bean id="customAuthListener"
-                class="com.we2seek.webgreetings.server.auth.CustomAuthListener"/>
-
-    <beans:bean id="customAuthenticationProvider"
-                class="com.we2seek.webgreetings.server.auth.CustomAuthenticationProvider"/>
-
-
-    <!--<http pattern="/index.css" security="none" />
-    <http pattern="/login.html" security="none" />
-    <http pattern="/auth-failure.html" security="none" />
+    <http pattern="/favicon.png" security="none"/>
+    <http pattern="/index.css" security="none"/>
+    <http pattern="/login.html" security="none"/>
+    <http pattern="/auth-failure.html" security="none"/>
 
     <http auto-config="true">
         <intercept-url pattern="/**" access="ROLE_USER"/>
@@ -28,14 +22,16 @@
                     password-parameter="j_password"/>
         <logout logout-success-url="/login.html"/>
 
-    </http>-->
-
-    <http auto-config="true">
-        <intercept-url pattern="/**" access="ROLE_USER"/>
     </http>
 
-    <authentication-manager alias="authenticationManager">
-        <authentication-provider ref="customAuthenticationProvider"/>
+    <!--<http auto-config="true">
+        <intercept-url pattern="/**" access="ROLE_USER"/>
+    </http>-->
+
+    <beans:bean id="customUserDetails" class="com.we2seek.webgreetings.server.auth.CustomUserDetails"/>
+
+    <authentication-manager>
+        <authentication-provider user-service-ref="customUserDetails"/>
     </authentication-manager>
 
 </beans:beans>

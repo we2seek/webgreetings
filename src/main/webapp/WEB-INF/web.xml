@@ -25,14 +25,14 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <servlet>
+    <!--<servlet>
         <servlet-name>authServlet</servlet-name>
         <servlet-class>com.we2seek.webgreetings.server.auth.AuthServiceImpl</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>authServlet</servlet-name>
         <url-pattern>/webgreetings/auth</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>-->
 
 
     <welcome-file-list>
